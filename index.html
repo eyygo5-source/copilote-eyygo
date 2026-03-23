@@ -3,1134 +3,591 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Copilote Eyygo — Angle & Difficultés | RBR / RSF</title>
-<meta name="description" content="Copilote Eyygo est un outil de copilotage pour Richard Burns Rally (RBR) et RSF. Téléchargez les pacenotes Angle & Difficultés gratuitement.">
+<title>Copilote Eyygo — Pacenotes RBR / RSF</title>
+<meta name="description" content="Copilote Eyygo, pacenotes Angle et Difficultés pour Richard Burns Rally et RSF. Téléchargement gratuit, guides et actus.">
 
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<meta name="google-adsense-account" content="ca-pub-4388754997084330">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388754997084330" crossorigin="anonymous"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --rally-red: #D4202A;
-    --rally-orange: #E8581A;
-    --rally-yellow: #F5C518;
-    --rally-dark: #0D0D0D;
-    --rally-dark2: #151515;
-    --rally-dark3: #1E1E1E;
-    --rally-dark4: #252525;
-    --rally-gray: #888;
-    --rally-lightgray: #CCCCCC;
-    --rally-white: #F0EDE8;
-    --accent: #E8581A;
-    --accent2: #D4202A;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Rajdhani', sans-serif;
-    background: var(--rally-dark);
-    color: var(--rally-white);
-    overflow-x: hidden;
-  }
-
-  /* ===== HEADER ===== */
-  header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(13,13,13,0.95);
-    border-bottom: 2px solid var(--rally-red);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    height: 64px;
-  }
-
-  .logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 1.8rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    line-height: 1;
-  }
-
-  .logo span { color: var(--rally-orange); }
-
-  .logo-sub {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    color: var(--rally-gray);
-    text-transform: uppercase;
-    display: block;
-    margin-top: 2px;
-  }
-
-  nav { display: flex; gap: 2rem; }
-  nav a {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--rally-lightgray);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  nav a:hover { color: var(--rally-orange); }
-
-  /* ===== HERO ===== */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding: 80px 0 0;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(135deg, rgba(212,32,42,0.15) 0%, transparent 50%),
-      linear-gradient(to bottom, transparent 60%, var(--rally-dark) 100%),
-      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><path d="M0 60L60 0" stroke="%23ffffff08" stroke-width="1"/></svg>');
-    background-size: cover, cover, 60px 60px;
-  }
-
-  .hero-stripe {
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0;
-    width: 6px;
-    background: linear-gradient(to bottom, var(--rally-red), var(--rally-orange));
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .hero-badge {
-    display: inline-block;
-    background: var(--rally-red);
-    color: #fff;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    margin-bottom: 1.2rem;
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
-  }
-
-  .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    text-transform: uppercase;
-    line-height: 0.9;
-    margin-bottom: 0.4rem;
-  }
-
-  .hero h1 .line1 { display: block; color: var(--rally-white); }
-  .hero h1 .line2 { display: block; color: var(--rally-orange); }
-
-  .hero-subtitle {
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: var(--rally-lightgray);
-    margin: 1.2rem 0 2rem;
-    line-height: 1.5;
-  }
-
-  .hero-tags {
-    display: flex;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-  }
-
-  .tag {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border: 1px solid var(--rally-orange);
-    color: var(--rally-orange);
-    background: rgba(232,88,26,0.08);
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--rally-red);
-    color: #fff;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 14px 32px;
-    text-decoration: none;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
-    transition: background 0.2s, transform 0.1s;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-primary:hover { background: var(--rally-orange); transform: translateX(3px); }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: transparent;
-    color: var(--rally-white);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 13px 28px;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.25);
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .btn-secondary:hover { border-color: var(--rally-orange); color: var(--rally-orange); }
-
-  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-  /* Specs panel */
-  .hero-specs {
-    background: var(--rally-dark3);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-left: 3px solid var(--rally-orange);
-    padding: 2rem;
-  }
-
-  .hero-specs h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--rally-orange);
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .spec-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 0.95rem;
-  }
-
-  .spec-row:last-child { border-bottom: none; }
-  .spec-label { color: var(--rally-gray); font-weight: 500; }
-  .spec-val { font-weight: 700; color: var(--rally-white); }
-  .spec-val.ok { color: #4CAF50; }
-
-  /* ===== AD BANNER ===== */
-  .ad-banner {
-    background: var(--rally-dark2);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 1.5rem 2rem;
-    text-align: center;
-  }
-
-  .ad-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--rally-gray);
-    margin-bottom: 0.5rem;
-  }
-
-  .ad-placeholder {
-    display: inline-block;
-    width: 728px;
-    max-width: 100%;
-    height: 90px;
-    background: var(--rally-dark4);
-    border: 1px dashed rgba(255,255,255,0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--rally-gray);
-    font-size: 0.85rem;
-    margin: 0 auto;
-  }
-
-  /* ===== SECTIONS ===== */
-  section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 5rem 2rem;
-  }
-
-  .section-header {
-    margin-bottom: 3rem;
-    display: flex;
-    align-items: flex-end;
-    gap: 1.5rem;
-  }
-
-  .section-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 5rem;
-    line-height: 1;
-    color: rgba(255,255,255,0.05);
-  }
-
-  .section-title-wrap {}
-
-  .section-eyebrow {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--rally-orange);
-    margin-bottom: 0.3rem;
-  }
-
-  .section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 2.8rem;
-    text-transform: uppercase;
-    line-height: 1;
-    color: var(--rally-white);
-  }
-
-  /* ===== FEATURES ===== */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-    background: rgba(255,255,255,0.06);
-  }
-
-  .feature-card {
-    background: var(--rally-dark2);
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.2s;
-  }
-
-  .feature-card:hover { background: var(--rally-dark3); }
-
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 0;
-    background: var(--rally-orange);
-    transition: height 0.3s;
-  }
-
-  .feature-card:hover::before { height: 100%; }
-
-  .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .feature-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--rally-white);
-    margin-bottom: 0.6rem;
-  }
-
-  .feature-desc {
-    font-size: 0.9rem;
-    color: var(--rally-gray);
-    line-height: 1.6;
-  }
-
-  /* ===== DOWNLOAD ===== */
-  .download-section {
-    background: var(--rally-dark2);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .download-section section {
-    max-width: 1100px;
-  }
-
-  .download-card {
-    background: var(--rally-dark3);
-    border: 1px solid rgba(255,255,255,0.08);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2rem;
-    padding: 2.5rem;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .download-card::after {
-    content: 'ZIP';
-    position: absolute;
-    right: -10px;
-    top: -20px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 8rem;
-    color: rgba(255,255,255,0.03);
-    pointer-events: none;
-    letter-spacing: -0.05em;
-  }
-
-  .download-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    color: var(--rally-white);
-    margin-bottom: 0.5rem;
-  }
-
-  .download-desc {
-    font-size: 0.95rem;
-    color: var(--rally-gray);
-    margin-bottom: 1.2rem;
-    line-height: 1.5;
-  }
-
-  .download-meta {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 0.85rem;
-    color: var(--rally-gray);
-  }
-
-  .download-meta span { display: flex; align-items: center; gap: 5px; }
-  .download-meta strong { color: var(--rally-lightgray); }
-
-  /* File slot pour upload */
-  .file-slot {
-    background: var(--rally-dark4);
-    border: 2px dashed rgba(255,255,255,0.12);
-    padding: 2rem;
-    text-align: center;
-    margin-top: 1.5rem;
-    cursor: pointer;
-    transition: border-color 0.2s;
-    position: relative;
-  }
-
-  .file-slot:hover { border-color: var(--rally-orange); }
-  .file-slot input[type="file"] { display: none; }
-
-  .file-slot-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
-
-  .file-slot-text {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--rally-gray);
-  }
-
-  .file-slot-sub {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.3);
-    margin-top: 0.3rem;
-  }
-
-  #file-status {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: var(--rally-orange);
-    font-weight: 600;
-    min-height: 1.2rem;
-  }
-
-  .file-ready {
-    margin-top: 1.5rem;
-    display: none;
-  }
-
-  .file-info {
-    background: rgba(232,88,26,0.1);
-    border: 1px solid rgba(232,88,26,0.3);
-    padding: 1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .file-info-name {
-    font-weight: 700;
-    color: var(--rally-white);
-    font-size: 0.95rem;
-  }
-
-  .file-info-size { font-size: 0.8rem; color: var(--rally-gray); margin-top: 2px; }
-
-  /* ===== HOW-TO ===== */
-  .steps-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: rgba(255,255,255,0.05);
-  }
-
-  .step {
-    background: var(--rally-dark2);
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 0;
-    align-items: stretch;
-    padding: 0;
-  }
-
-  .step-num {
-    background: var(--rally-dark3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: rgba(255,255,255,0.1);
-    border-right: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .step:hover .step-num { color: var(--rally-orange); }
-
-  .step-body { padding: 1.5rem 2rem; }
-
-  .step-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 1.15rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--rally-white);
-    margin-bottom: 0.4rem;
-  }
-
-  .step-desc { font-size: 0.9rem; color: var(--rally-gray); line-height: 1.5; }
-
-  /* ===== AD SIDEBAR ===== */
-  .content-with-ad {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 5rem 2rem;
-    align-items: start;
-  }
-
-  .ad-sidebar {
-    position: sticky;
-    top: 80px;
-  }
-
-  .ad-box {
-    background: var(--rally-dark2);
-    border: 1px dashed rgba(255,255,255,0.1);
-    padding: 0.5rem;
-    text-align: center;
-  }
-
-  /* ===== FOOTER ===== */
-  footer {
-    background: var(--rally-dark2);
-    border-top: 2px solid var(--rally-red);
-    padding: 3rem 2rem 2rem;
-  }
-
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 2rem;
-  }
-
-  .footer-brand p {
-    font-size: 0.9rem;
-    color: var(--rally-gray);
-    line-height: 1.6;
-    margin-top: 0.8rem;
-    max-width: 300px;
-  }
-
-  .footer-col h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--rally-orange);
-    margin-bottom: 1rem;
-  }
-
-  .footer-col a {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--rally-gray);
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-    transition: color 0.2s;
-  }
-
-  .footer-col a:hover { color: var(--rally-white); }
-
-  .footer-bottom {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.25);
-  }
-
-  /* ===== DIVIDERS ===== */
-  .divider {
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-  }
-
-  .rally-stripe {
-    height: 4px;
-    background: repeating-linear-gradient(90deg, var(--rally-red) 0px, var(--rally-red) 20px, transparent 20px, transparent 25px, var(--rally-orange) 25px, var(--rally-orange) 35px, transparent 35px, transparent 40px);
-  }
-
-  /* ===== MODAL DOWNLOAD ===== */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modal-overlay.active { display: flex; }
-
-  .modal {
-    background: var(--rally-dark3);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-top: 3px solid var(--rally-orange);
-    padding: 2.5rem;
-    max-width: 480px;
-    width: 90%;
-    position: relative;
-  }
-
-  .modal h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  .modal p { font-size: 0.95rem; color: var(--rally-gray); margin-bottom: 1.5rem; line-height: 1.5; }
-
-  .modal-ad { margin: 1.5rem 0; background: var(--rally-dark4); border: 1px dashed rgba(255,255,255,0.1); padding: 0.5rem; text-align: center; }
-
-  .modal-close {
-    position: absolute;
-    top: 1rem; right: 1rem;
-    background: none;
-    border: none;
-    color: var(--rally-gray);
-    font-size: 1.5rem;
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.2s;
-  }
-
-  .modal-close:hover { color: var(--rally-white); }
-
-  #countdown {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--rally-orange);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    .hero-content { grid-template-columns: 1fr; gap: 2rem; }
-    .features-grid { grid-template-columns: 1fr 1fr; }
-    .content-with-ad { grid-template-columns: 1fr; }
-    .ad-sidebar { position: static; }
-    .footer-inner { grid-template-columns: 1fr 1fr; }
-    nav { display: none; }
-    .download-card { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 600px) {
-    .features-grid { grid-template-columns: 1fr; }
-    .footer-inner { grid-template-columns: 1fr; }
-  }
+:root {
+  --red:    #C8102E;
+  --orange: #E05A00;
+  --yellow: #F0B429;
+  --dark:   #0A0A0A;
+  --dark2:  #111111;
+  --dark3:  #181818;
+  --dark4:  #202020;
+  --dark5:  #282828;
+  --text:   #E8E4DC;
+  --muted:  #888880;
+  --border: rgba(255,255,255,0.07);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Exo 2',sans-serif;
+  background:var(--dark);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--dark2);}
+::-webkit-scrollbar-thumb{background:var(--red);}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;
+  background:rgba(10,10,10,0.96);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+
+.nav-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem;
+  letter-spacing:0.08em;
+  color:var(--text);
+  text-decoration:none;
+}
+.nav-logo span{color:var(--orange);}
+
+.nav-links{display:flex;gap:1.8rem;}
+.nav-links a{
+  font-size:0.85rem;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--text);}
+
+.nav-dl{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1rem;letter-spacing:0.1em;
+  background:var(--red);color:#fff;
+  padding:7px 20px;
+  text-decoration:none;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,0 100%);
+  transition:background .2s;
+}
+.nav-dl:hover{background:var(--orange);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding-top:56px;
+  position:relative;overflow:hidden;
+}
+
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(200,16,46,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(200,16,46,0.04) 1px,transparent 1px);
+  background-size:48px 48px;
+  animation:gridMove 20s linear infinite;
+}
+@keyframes gridMove{to{background-position:48px 48px;}}
+
+.hero-glow{
+  position:absolute;
+  top:-200px;left:-200px;
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(200,16,46,0.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:1100px;margin:0 auto;
+  padding:5rem 2rem;
+  display:grid;grid-template-columns:1.2fr 1fr;
+  gap:4rem;align-items:center;
+}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.75rem;font-weight:700;
+  letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:1rem;
+}
+.hero-eyebrow::before{
+  content:'';display:block;
+  width:24px;height:2px;background:var(--orange);
+}
+
+.hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4rem,9vw,7rem);
+  line-height:0.92;
+  letter-spacing:0.03em;
+  margin-bottom:1.5rem;
+}
+.hero h1 em{
+  font-style:normal;
+  color:var(--orange);
+  display:block;
+}
+
+.hero-desc{
+  font-size:1rem;font-weight:300;
+  color:var(--muted);line-height:1.7;
+  margin-bottom:2rem;max-width:480px;
+}
+
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+
+.btn-red{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.05rem;letter-spacing:0.1em;
+  background:var(--red);color:#fff;
+  padding:12px 28px;
+  text-decoration:none;border:none;cursor:pointer;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);
+  transition:background .2s,transform .1s;
+}
+.btn-red:hover{background:var(--orange);transform:translateX(2px);}
+
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.85rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--text);
+  padding:11px 24px;
+  text-decoration:none;
+  border:1px solid var(--border);
+  transition:border-color .2s,color .2s;
+}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange);}
+
+.hero-stats{
+  display:flex;gap:2rem;
+}
+.stat-item{}
+.stat-val{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.2rem;color:var(--text);
+  line-height:1;
+}
+.stat-label{font-size:0.75rem;color:var(--muted);margin-top:3px;letter-spacing:0.1em;text-transform:uppercase;}
+
+/* Hero card */
+.hero-card{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  border-top:2px solid var(--orange);
+  padding:2rem;
+  animation:cardFloat 4s ease-in-out infinite;
+}
+@keyframes cardFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+.card-label{
+  font-size:0.7rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:1.2rem;
+  padding-bottom:0.8rem;
+  border-bottom:1px solid var(--border);
+}
+
+.card-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.55rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  font-size:0.9rem;
+}
+.card-row:last-child{border-bottom:none;}
+.card-key{color:var(--muted);}
+.card-val{font-weight:600;color:var(--text);}
+.card-val.green{color:#4ade80;}
+.card-val.orange{color:var(--orange);}
+
+/* ── AD STRIP ── */
+.ad-strip{
+  background:var(--dark2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:1.2rem 2rem;
+  text-align:center;
+}
+.ad-label-text{
+  font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.2);margin-bottom:6px;
+}
+
+/* ── SECTION BASE ── */
+.section{
+  max-width:1100px;margin:0 auto;
+  padding:5rem 2rem;
+}
+
+.section-tag{
+  display:inline-block;
+  font-size:0.7rem;font-weight:700;
+  letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--orange);
+  margin-bottom:0.5rem;
+}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.2rem,5vw,3.5rem);
+  letter-spacing:0.03em;
+  line-height:1;
+  margin-bottom:3rem;
+}
+.section-title span{color:var(--orange);}
+
+/* ── FEATURES ── */
+.feat-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+}
+.feat{
+  background:var(--dark2);
+  padding:2rem;
+  position:relative;
+  overflow:hidden;
+  transition:background .2s;
+}
+.feat:hover{background:var(--dark3);}
+.feat::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--orange);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s;
+}
+.feat:hover::after{transform:scaleX(1);}
+
+.feat-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.5rem;color:rgba(255,255,255,0.04);
+  line-height:1;margin-bottom:0.5rem;
+}
+.feat-icon{font-size:1.5rem;margin-bottom:0.8rem;display:block;}
+.feat-title{
+  font-weight:700;font-size:1rem;
+  text-transform:uppercase;letter-spacing:0.05em;
+  margin-bottom:0.5rem;
+}
+.feat-text{font-size:0.875rem;color:var(--muted);line-height:1.6;}
+
+/* ── DOWNLOAD ── */
+.dl-section{background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+
+.dl-inner{
+  max-width:1100px;margin:0 auto;
+  padding:5rem 2rem;
+  display:grid;grid-template-columns:1fr 300px;
+  gap:3rem;align-items:start;
+}
+
+.dl-card{
+  background:var(--dark3);
+  border:1px solid var(--border);
+  border-left:3px solid var(--red);
+  padding:2.5rem;
+}
+.dl-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;letter-spacing:0.03em;
+  margin-bottom:0.5rem;
+}
+.dl-desc{font-size:0.9rem;color:var(--muted);line-height:1.6;margin-bottom:1.5rem;}
+.dl-meta{display:flex;gap:1.5rem;margin-bottom:2rem;font-size:0.82rem;color:var(--muted);}
+.dl-meta strong{color:var(--text);}
+
+/* Upload zone */
+.upload-zone{
+  margin-top:2rem;
+  padding-top:2rem;
+  border-top:1px solid var(--border);
+}
+.upload-label{
+  font-size:0.7rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:0.8rem;display:block;
+}
+.drop-area{
+  border:1px dashed rgba(255,255,255,0.15);
+  padding:1.8rem;
+  text-align:center;
+  cursor:pointer;
+  transition:border-color .2s,background .2s;
+  background:var(--dark4);
+}
+.drop-area:hover{border-color:var(--orange);background:rgba(224,90,0,0.04);}
+.drop-area input{display:none;}
+.drop-icon{font-size:2rem;margin-bottom:0.6rem;}
+.drop-main{font-size:0.9rem;font-weight:600;color:var(--muted);}
+.drop-sub{font-size:0.75rem;color:rgba(255,255,255,0.2);margin-top:3px;}
+#file-status{margin-top:0.8rem;font-size:0.85rem;color:var(--orange);font-weight:600;min-height:1.1rem;}
+.file-info-bar{
+  display:none;margin-top:1rem;
+  background:rgba(74,222,128,0.07);
+  border:1px solid rgba(74,222,128,0.2);
+  padding:0.8rem 1rem;
+  align-items:center;justify-content:space-between;
+  font-size:0.85rem;
+}
+.fi-name{font-weight:600;color:var(--text);}
+.fi-size{color:var(--muted);font-size:0.75rem;margin-top:2px;}
+.fi-ok{color:#4ade80;font-size:1.1rem;}
+
+/* Ad sidebar */
+.ad-sidebar{position:sticky;top:72px;}
+.ad-sidebar .ad-label-text{text-align:center;margin-bottom:6px;}
+
+/* ── BLOG ── */
+.blog-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.blog-card{
+  background:var(--dark2);
+  border:1px solid var(--border);
+  overflow:hidden;
+  transition:transform .2s,border-color .2s;
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+  display:block;
+}
+.blog-card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,0.15);}
+
+.blog-thumb{
+  height:140px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;
+  background:var(--dark3);
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.blog-thumb::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(200,16,46,0.15),transparent);
+}
+.blog-cat{
+  display:inline-block;
+  font-size:0.65rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--orange);
+  padding:0.8rem 1rem 0.3rem;
+}
+.blog-title{
+  font-weight:700;font-size:0.95rem;
+  padding:0 1rem 0.6rem;line-height:1.4;
+}
+.blog-excerpt{
+  font-size:0.8rem;color:var(--muted);
+  padding:0 1rem 1rem;line-height:1.5;
+}
+.blog-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.8rem 1rem;
+  border-top:1px solid var(--border);
+  font-size:0.75rem;color:var(--muted);
+}
+
+/* ── INSTALL STEPS ── */
+.steps-wrap{display:flex;flex-direction:column;gap:1px;background:var(--border);}
+.step-item{
+  background:var(--dark2);
+  display:grid;grid-template-columns:72px 1fr;
+  transition:background .15s;
+}
+.step-item:hover{background:var(--dark3);}
+.step-n{
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:2.8rem;
+  color:rgba(255,255,255,0.06);
+  border-right:1px solid var(--border);
+  transition:color .2s;
+}
+.step-item:hover .step-n{color:var(--orange);}
+.step-body{padding:1.5rem 2rem;}
+.step-title{font-weight:700;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;}
+.step-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+.step-code{
+  font-family:monospace;font-size:0.8rem;
+  background:var(--dark5);border:1px solid rgba(255,255,255,0.06);
+  padding:4px 10px;margin-top:6px;display:inline-block;
+  color:var(--orange);
+}
+
+/* ── MODAL ── */
+.modal-bg{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,0.88);z-index:1000;
+  align-items:center;justify-content:center;
+}
+.modal-bg.on{display:flex;}
+.modal{
+  background:var(--dark3);
+  border:1px solid rgba(255,255,255,0.1);
+  border-top:2px solid var(--orange);
+  padding:2.5rem;width:90%;max-width:460px;
+  position:relative;
+}
+.modal h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;letter-spacing:0.05em;
+  margin-bottom:0.4rem;
+}
+.modal p{font-size:0.9rem;color:var(--muted);line-height:1.5;margin-bottom:1.2rem;}
+.modal-close{
+  position:absolute;top:1rem;right:1rem;
+  background:none;border:none;
+  color:var(--muted);font-size:1.4rem;
+  cursor:pointer;transition:color .2s;line-height:1;
+}
+.modal-close:hover{color:var(--text);}
+#cd-text{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1rem;letter-spacing:0.1em;
+  color:var(--orange);text-align:center;
+  display:block;margin-bottom:0.8rem;
+}
+.btn-dl-final{
+  width:100%;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.1rem;letter-spacing:0.1em;
+  background:var(--red);color:#fff;border:none;
+  padding:14px;cursor:pointer;
+  transition:background .2s;
+}
+.btn-dl-final:disabled{background:var(--dark5);color:var(--muted);cursor:not-allowed;}
+.btn-dl-final:not(:disabled):hover{background:var(--orange);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--dark2);
+  border-top:2px solid var(--red);
+  padding:3rem 2rem 2rem;
+}
+.foot-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:3rem;margin-bottom:2rem;
+}
+.foot-logo{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;letter-spacing:0.06em;
+  text-decoration:none;color:var(--text);
+}
+.foot-logo span{color:var(--orange);}
+.foot-desc{font-size:0.85rem;color:var(--muted);line-height:1.6;margin-top:0.6rem;max-width:280px;}
+.foot-col h4{
+  font-size:0.7rem;font-weight:700;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:1rem;
+}
+.foot-col a{
+  display:block;font-size:0.88rem;color:var(--muted);
+  text-decoration:none;margin-bottom:0.5rem;
+  transition:color .2s;
+}
+.foot-col a:hover{color:var(--text);}
+.foot-bottom{
+  max-width:1100px;margin:0 auto;
+  padding-top:1.5rem;
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;
+  font-size:0.75rem;color:rgba(255,255,255,0.2);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner,.dl-inner{grid-template-columns:1fr;}
+  .feat-grid,.blog-grid{grid-template-columns:1fr 1fr;}
+  .foot-inner{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .ad-sidebar{display:none;}
+}
+@media(max-width:580px){
+  .feat-grid,.blog-grid{grid-template-columns:1fr;}
+  .foot-inner{grid-template-columns:1fr;}
+  .hero-stats{flex-wrap:wrap;gap:1.2rem;}
+}
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header>
-  <div>
-    <div class="logo">Copilote <span>Eyygo</span></div>
-    <span class="logo-sub">Angle &amp; Difficultés — RBR / RSF</span>
+<nav>
+  <a href="#" class="nav-logo">Copilote <span>Eyygo</span></a>
+  <div class="nav-links">
+    <a href="#fonctionnalites">Fonctionnalités</a>
+    <a href="#telechargement">Télécharger</a>
+    <a href="#installation">Installation</a>
+    <a href="#blog">Blog</a>
   </div>
-  <nav>
-    <a href="#features">Fonctionnalités</a>
-    <a href="#download">Télécharger</a>
-    <a href="#howto">Installation</a>
-    <a href="#about">À propos</a>
-  </nav>
-</header>
+  <a href="#telechargement" class="nav-dl" onclick="openModal();return false;">↓ Télécharger</a>
+</nav>
 
-<!-- ===== HERO ===== -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-stripe"></div>
-  <div class="hero-content">
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
     <div>
-      <div class="hero-badge">&#127937; Version Gratuite</div>
-      <h1>
-        <span class="line1">Copilote</span>
-        <span class="line2">Eyygo</span>
-      </h1>
-      <div class="hero-tags">
-        <span class="tag">Angle</span>
-        <span class="tag">Difficultés</span>
-        <span class="tag">RBR</span>
-        <span class="tag">RSF</span>
-        <span class="tag">Pacenotes</span>
-      </div>
-      <p class="hero-subtitle">
-        Pacenotes professionnels pour Richard Burns Rally et le plugin RSF.<br>
-        Format Angle &amp; Difficultés — conçu pour les simrallieurs exigeants.
+      <div class="hero-eyebrow">Pacenotes RBR / RSF</div>
+      <h1>Copilote<em>Eyygo</em></h1>
+      <p class="hero-desc">
+        Pacenotes professionnels au format <strong>Angle &amp; Difficultés</strong> pour Richard Burns Rally et le plugin RSF. Conçus pour les simrallieurs qui veulent attaquer au maximum.
       </p>
-      <div class="hero-btns">
-        <a href="#download" class="btn-primary" onclick="showModal()">
-          &#9660; Télécharger gratuitement
-        </a>
-        <a href="#howto" class="btn-secondary">Guide d'installation</a>
+      <div class="hero-ctas">
+        <a href="#telechargement" class="btn-red" onclick="openModal();return false;">↓ Télécharger gratuitement</a>
+        <a href="#installation" class="btn-ghost">Guide d'installation</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-val">100%</div>
+          <div class="stat-label">Gratuit</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">RSF</div>
+          <div class="stat-label">Compatible</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">FR</div>
+          <div class="stat-label">Langue</div>
+        </div>
       </div>
     </div>
-    <div class="hero-specs">
-      <h3>&#9776; Infos techniques</h3>
-      <div class="spec-row">
-        <span class="spec-label">Jeu</span>
-        <span class="spec-val">Richard Burns Rally</span>
-      </div>
-      <div class="spec-row">
-        <span class="spec-label">Plugin</span>
-        <span class="spec-val">RSF (RBRnet)</span>
-      </div>
-      <div class="spec-row">
-        <span class="spec-label">Format</span>
-        <span class="spec-val">Angle &amp; Difficultés</span>
-      </div>
-      <div class="spec-row">
-        <span class="spec-label">Langue</span>
-        <span class="spec-val">Français</span>
-      </div>
-      <div class="spec-row">
-        <span class="spec-label">Voix</span>
-        <span class="spec-val">TTS / Personnalisable</span>
-      </div>
-      <div class="spec-row">
-        <span class="spec-label">Prix</span>
-        <span class="spec-val ok">GRATUIT</span>
-      </div>
+    <div class="hero-card">
+      <div class="card-label">⚙ Fiche technique</div>
+      <div class="card-row"><span class="card-key">Jeu</span><span class="card-val">Richard Burns Rally</span></div>
+      <div class="card-row"><span class="card-key">Plugin</span><span class="card-val orange">RSF / RBRnet</span></div>
+      <div class="card-row"><span class="card-key">Format notes</span><span class="card-val">Angle &amp; Difficultés</span></div>
+      <div class="card-row"><span class="card-key">Langue</span><span class="card-val">Français</span></div>
+      <div class="card-row"><span class="card-key">Voix</span><span class="card-val">TTS inclus</span></div>
+      <div class="card-row"><span class="card-key">Format fichier</span><span class="card-val">.zip</span></div>
+      <div class="card-row"><span class="card-key">Prix</span><span class="card-val green">GRATUIT</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ===== PUB BANNIÈRE HAUTE ===== -->
-<div class="ad-banner">
-  <div class="ad-label">Publicité</div>
-  <!-- AdSense Leaderboard 728x90 -->
-  <ins class="adsbygoogle ad-placeholder"
-       style="display:inline-block;width:728px;height:90px"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="1234567890"></ins>
+<div class="ad-strip">
+  <div class="ad-label-text">Publicité</div>
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-layout="in-article"
+       data-ad-format="fluid"
+       data-ad-client="ca-pub-4388754997084330"
+       data-ad-slot="auto"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
-
-<div class="rally-stripe"></div>
-
-<!-- ===== FEATURES ===== -->
-<section id="features">
-  <div class="section-header">
-    <div class="section-num">01</div>
-    <div class="section-title-wrap">
-      <div class="section-eyebrow">Pourquoi Eyygo</div>
-      <div class="section-title">Fonctionnalités</div>
-    </div>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card">
-      <span class="feature-icon">&#127939;</span>
-      <div class="feature-title">Format Angle &amp; Difficultés</div>
-      <p class="feature-desc">Pacenotes avec angles précis et niveau de difficulté pour chaque virage. Idéal pour les pilotes qui veulent progresser rapidement.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">&#128263;</span>
-      <div class="feature-title">Compatibilité RSF</div>
-      <p class="feature-desc">Intégration native avec le plugin RSF (RBRnet). Lecture vocale automatique des notes pendant vos stages.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">&#127758;</span>
-      <div class="feature-title">Multi-spéciale</div>
-      <p class="feature-desc">Pacenotes disponibles pour de nombreuses spéciales du jeu. Mis à jour régulièrement avec les nouvelles pistes RSF.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">&#9881;</span>
-      <div class="feature-title">Installation simple</div>
-      <p class="feature-desc">Déposez les fichiers dans le bon dossier, et c'est parti. Aucune configuration complexe requise.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">&#127775;</span>
-      <div class="feature-title">Rythme optimisé</div>
-      <p class="feature-desc">Les notes sont conçues pour maximiser l'attaque tout en gardant la voiture sur la route. Chaque appel est calibré.</p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">&#128100;</span>
-      <div class="feature-title">Communauté RBR</div>
-      <p class="feature-desc">Créé par un passionné de la scène RBR francophone. N'hésitez pas à donner vos retours pour améliorer les notes.</p>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ===== DOWNLOAD + AD SIDEBAR ===== -->
-<div class="download-section" id="download">
-  <div class="content-with-ad">
-    <div>
-      <div class="section-header">
-        <div class="section-num">02</div>
-        <div class="section-title-wrap">
-          <div class="section-eyebrow">Dossier Pacenotes</div>
-          <div class="section-title">Téléchargement</div>
-        </div>
-      </div>
-
-      <div class="download-card" id="download-card">
-        <div>
-          <div class="download-title">Copilote Eyygo — Pacenotes ZIP</div>
-          <p class="download-desc">
-            Archive ZIP contenant tous les fichiers de pacenotes au format Angle &amp; Difficultés pour RSF / RBR. Décompressez dans votre dossier de pacenotes RBR.
-          </p>
-          <div class="download-meta">
-            <span>&#128190; <strong id="file-size">—</strong></span>
-            <span>&#128196; <strong>Format .zip</strong></span>
-            <span>&#128994; <strong>Gratuit</strong></span>
-          </div>
-        </div>
-        <div>
-          <button class="btn-primary" onclick="showModal()" id="dl-btn">
-            &#9660; Télécharger
-          </button>
-        </div>
-      </div>
-
-      <!-- Zone d'upload admin -->
-      <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06);">
-        <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--rally-orange); margin-bottom:1rem;">
-          &#128274; Zone Admin — Mise à jour du fichier
-        </div>
-        <div class="file-slot" onclick="document.getElementById('upload-input').click()">
-          <input type="file" id="upload-input" accept=".zip" onchange="handleFileUpload(event)">
-          <div class="file-slot-icon">&#128194;</div>
-          <div class="file-slot-text">Déposer ou cliquer pour choisir le fichier ZIP</div>
-          <div class="file-slot-sub">Le fichier ZIP sera proposé au téléchargement sur le site</div>
-        </div>
-        <div id="file-status"></div>
-        <div class="file-ready" id="file-ready">
-          <div class="file-info">
-            <div>
-              <div class="file-info-name" id="fn-name">—</div>
-              <div class="file-info-size" id="fn-size">—</div>
-            </div>
-            <span style="color:#4CAF50; font-weight:700; font-size:1.2rem;">&#10003; Prêt</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Ad sidebar 300x600 -->
-    <div class="ad-sidebar">
-      <div class="ad-label" style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rally-gray);margin-bottom:0.5rem;text-align:center;">Publicité</div>
-      <div class="ad-box">
-        <!-- AdSense 300x600 -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:300px;height:600px"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-             data-ad-slot="9876543210"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="rally-stripe"></div>
-
-<!-- ===== HOWTO ===== -->
-<section id="howto">
-  <div class="section-header">
-    <div class="section-num">03</div>
-    <div class="section-title-wrap">
-      <div class="section-eyebrow">Guide rapide</div>
-      <div class="section-title">Installation</div>
-    </div>
-  </div>
-  <div class="steps-list">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <div class="step-title">Télécharger le ZIP</div>
-        <p class="step-desc">Cliquez sur le bouton « Télécharger » ci-dessus. Après la publicité, le téléchargement démarrera automatiquement.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <div class="step-title">Décompresser l'archive</div>
-        <p class="step-desc">Faites un clic droit sur le fichier ZIP téléchargé et choisissez « Extraire tout ». Vous obtiendrez un dossier contenant les fichiers de pacenotes.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <div class="step-title">Copier dans le dossier RBR</div>
-        <p class="step-desc">Placez les fichiers dans votre répertoire RBR, sous <code style="background:rgba(255,255,255,0.08);padding:2px 6px;font-size:0.85rem;">…\Richard Burns Rally\RBRPro\pacenotes\</code> ou dans le dossier prévu par RSF.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-body">
-        <div class="step-title">Configurer RSF</div>
-        <p class="step-desc">Dans le plugin RSF, activez le copilote et sélectionnez les pacenotes Eyygo dans les paramètres de votre profil de conduite.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">5</div>
-      <div class="step-body">
-        <div class="step-title">Lancer une spéciale</div>
-        <p class="step-desc">Démarrez RBR avec RSF, choisissez une spéciale compatible et profitez des appels de notes Angle &amp; Difficultés en temps réel !</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PUB BAS DE PAGE ===== -->
-<div class="ad-banner">
-  <div class="ad-label">Publicité</div>
-  <ins class="adsbygoogle ad-placeholder"
-       style="display:inline-block;width:728px;height:90px"
-       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-       data-ad-slot="1122334455"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
-<!-- ===== ABOUT ===== -->
-<section id="about">
-  <div style="max-width:700px;">
-    <div class="section-eyebrow">À propos</div>
-    <div class="section-title" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.8rem;text-transform:uppercase;margin-bottom:1.5rem;">Copilote Eyygo</div>
-    <p style="font-size:1rem;color:var(--rally-gray);line-height:1.8;margin-bottom:1rem;">
-      Copilote Eyygo est un projet né de la passion pour la simulation de rallye et pour Richard Burns Rally en particulier. Les pacenotes au format <strong style="color:var(--rally-white);">Angle &amp; Difficultés</strong> sont créées manuellement pour offrir la meilleure expérience possible en conduite simulée.
-    </p>
-    <p style="font-size:1rem;color:var(--rally-gray);line-height:1.8;margin-bottom:1.5rem;">
-      Ce projet est 100% gratuit et ouvert à la communauté RBR francophone. Si vous avez des retours ou des suggestions d'amélioration, n'hésitez pas à les partager !
-    </p>
-    <a href="#download" class="btn-primary" onclick="showModal()">&#9660; Télécharger maintenant</a>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="logo">Copilote <span>Eyygo</span></div>
-      <p>Pacenotes Angle &amp; Difficultés pour RBR &amp; RSF. Projet communautaire francophone — 100% gratuit.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigation</h4>
-      <a href="#features">Fonctionnalités</a>
-      <a href="#download">Télécharger</a>
-      <a href="#howto">Installation</a>
-      <a href="#about">À propos</a>
-    </div>
-    <div class="footer-col">
-      <h4>Ressources</h4>
-      <a href="https://www.rbr-world.com" target="_blank" rel="noopener">RBR-World</a>
-      <a href="https://rsfrbr.com" target="_blank" rel="noopener">RSF Plugin</a>
-      <a href="https://forum.richardburnsrally.com" target="_blank" rel="noopener">Forum RBR</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Copilote Eyygo. Tous droits réservés.</span>
-    <span>Richard Burns Rally est une marque de Warthog Games. Site non affilié.</span>
-  </div>
-</footer>
-
-<!-- ===== MODAL TÉLÉCHARGEMENT (avec pub) ===== -->
-<div class="modal-overlay" id="dl-modal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">&#215;</button>
-    <h2>&#9660; Téléchargement</h2>
-    <p>Merci de soutenir le projet ! Une courte publicité permet de maintenir ce copilote gratuit.</p>
-    <div class="modal-ad">
-      <!-- AdSense 300x250 -->
-      <ins class="adsbygoogle"
-           style="display:inline-block;width:300px;height:250px"
-           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-           data-ad-slot="5566778899"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-    <p style="text-align:center;margin-bottom:0.5rem;"><span id="countdown">Téléchargement dans 5 secondes…</span></p>
-    <button class="btn-primary" id="dl-final-btn" style="width:100%;justify-content:center;clip-path:none;margin-top:0.5rem;" disabled onclick="startDownload()">
-      &#9660; Lancer le téléchargement
-    </button>
-  </div>
-</div>
-
-<script>
-  // ===== FICHIER ZIP EN MÉMOIRE =====
-  let uploadedFileURL = null;
-  let uploadedFileName = 'copilote-eyygo.zip';
-
-  function handleFileUpload(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    if (!file.name.endsWith('.zip')) {
-      document.getElementById('file-status').textContent = '⚠ Veuillez sélectionner un fichier .zip';
-      return;
-    }
-    // Révoquer l'ancien URL si existant
-    if (uploadedFileURL) URL.revokeObjectURL(uploadedFileURL);
-    uploadedFileURL = URL.createObjectURL(file);
-    uploadedFileName = file.name;
-
-    // Mise à jour UI
-    document.getElementById('fn-name').textContent = file.name;
-    const size = file.size > 1024*1024
-      ? (file.size / (1024*1024)).toFixed(1) + ' Mo'
-      : (file.size / 1024).toFixed(0) + ' Ko';
-    document.getElementById('fn-size').textContent = size;
-    document.getElementById('file-size').textContent = size;
-    document.getElementById('file-status').textContent = '✓ Fichier chargé — prêt à être téléchargé par les visiteurs';
-    document.getElementById('file-ready').style.display = 'block';
-    document.getElementById('dl-btn').removeAttribute('disabled');
-  }
-
-  // ===== MODAL =====
-  let countdownInterval;
-
-  function showModal() {
-    document.getElementById('dl-modal').classList.add('active');
-    let sec = 5;
-    const btn = document.getElementById('dl-final-btn');
-    const cd = document.getElementById('countdown');
-    btn.disabled = true;
-    btn.style.opacity = '0.5';
-    cd.textContent = `Téléchargement dans ${sec} seconde${sec > 1 ? 's' : ''}…`;
-    countdownInterval = setInterval(() => {
-      sec--;
-      if (sec <= 0) {
-        clearInterval(countdownInterval);
-        btn.disabled = false;
-        btn.style.opacity = '1';
-        cd.textContent = '✓ Prêt !';
-      } else {
-        cd.textContent = `Téléchargement dans ${sec} seconde${sec > 1 ? 's' : ''}…`;
-      }
-    }, 1000);
-  }
-
-  function closeModal() {
-    clearInterval(countdownInterval);
-    document.getElementById('dl-modal').classList.remove('active');
-  }
-
-  function startDownload() {
-    if (!uploadedFileURL) {
-      alert('Aucun fichier disponible pour le moment. Revenez bientôt !');
-      closeModal();
-      return;
-    }
-    const a = document.createElement('a');
-    a.href = uploadedFileURL;
-    a.download = uploadedFileName;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    closeModal();
-  }
-
-  // Fermer modal au clic sur l'overlay
-  document.getElementById('dl-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
-
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  });
-</script>
-</body>
-</html>
